@@ -27,13 +27,13 @@ export const ImgBanner = styled.div`
   line-height: 37px;
   color: #fff;
 
-  h3 {
-    padding-top: 24px;
-    font-weight: 100;
-    margin-bottom: 156px;
-  }
-
   p {
     font-weight: 900;
   }
+`
+
+export const Titulo = styled.p`
+  font-weight: 100;
+  padding-top: 24px;
+  margin-bottom: 156px;
 `

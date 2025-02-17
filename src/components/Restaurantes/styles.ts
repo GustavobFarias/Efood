@@ -6,16 +6,24 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
 `
 
+export const RestaurantImage = styled.div`
+  width: 100%;
+  height: 217px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`
+
 export const Card = styled.div`
   width: 472px;
   margin-top: 80px;
   border: 1px solid ${cores.rosado};
   color: ${cores.rosado};
   position: relative;
-
-  img {
-    width: 100%;
-  }
 `
 
 export const Infos = styled.div`
@@ -48,13 +56,26 @@ export const Descrition = styled.p`
   padding-bottom: 16px;
 `
 
-export const Button = styled.button`
-  width: 82px;
-  height: 24px;
+export const BotaoSaibaMais = styled.a`
+  display: inline-block;
+  text-decoration: none;
+  padding: 4px 6px;
   background-color: ${cores.rosado};
   border: none;
   font-size: 14px;
   color: ${cores.branca};
+  cursor: pointer;
+`
+
+export const BotaoDetalhes = styled.a`
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 4px 6px;
+  background-color: ${cores.branca};
+  border: none;
+  font-size: 14px;
+  color: ${cores.rosado};
   cursor: pointer;
 `
 

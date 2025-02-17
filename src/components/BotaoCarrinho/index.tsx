@@ -1,97 +1,102 @@
-import pizza from '../../assets/images/pizza.png'
-import { Button, Descricao, Imagem, NomePrato, Prato, Produto } from './styles'
+import { useState } from 'react'
+import {
+  Container,
+  Descricao,
+  Descrition,
+  Header,
+  Imagem,
+  ModalContainer,
+  NomePrato,
+  Prato,
+  Titulo,
+  Items as StyledItems,
+  Carrinho
+} from './styles'
+import { BotaoDetalhes } from '../Restaurantes/styles'
+import fechar from '../../assets/images/x.png'
+import { ProdutoContainer } from './ProdutoContainer'
 
-const Botao = () => {
+export type Prato = {
+  id: number
+  nome: string
+  descricao: string
+  foto: string
+  preco: number
+  porcao: string
+}
+
+type Props = {
+  type: 'button' | 'link'
+  title: string
+  to?: string
+  onClick?: () => void
+  name: string
+  description: string
+  image: string
+  serve: string
+  infos: string
+}
+
+const Items = ({
+  type = 'button',
+  title,
+  to,
+  name,
+  description,
+  image,
+  infos,
+  serve
+}: Props) => {
+  const [modalVisivel, setModalVisivel] = useState(false)
+
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 200) {
+      return descricao.slice(0, 150) + '...'
+    }
+    return descricao
+  }
+
+  const handleClick = (event: React.MouseEvent) => {
+    if (type === 'button') {
+      event.preventDefault()
+      setModalVisivel(true)
+    }
+  }
+
   return (
-    <>
-      <Produto className="container">
-        <Prato>
-          <Imagem>
-            <img src={pizza} alt="" />
-          </Imagem>
-          <div>
-            <NomePrato>Pizza Marguerita</NomePrato>
-            <Descricao>
-              A clássica Marguerita: molho de tomate suculento, mussarela
-              derretida, manjericão fresco e um toque de azeite. Sabor e
-              simplicidade!
-            </Descricao>
-            <Button>Adicionar ao carrinho</Button>
-          </div>
-        </Prato>
-        <Prato>
-          <Imagem>
-            <img src={pizza} alt="" />
-          </Imagem>
-          <div>
-            <NomePrato>Pizza Marguerita</NomePrato>
-            <Descricao>
-              A clássica Marguerita: molho de tomate suculento, mussarela
-              derretida, manjericão fresco e um toque de azeite. Sabor e
-              simplicidade!
-            </Descricao>
-            <Button>Adicionar ao carrinho</Button>
-          </div>
-        </Prato>
-        <Prato>
-          <Imagem>
-            <img src={pizza} alt="" />
-          </Imagem>
-          <div>
-            <NomePrato>Pizza Marguerita</NomePrato>
-            <Descricao>
-              A clássica Marguerita: molho de tomate suculento, mussarela
-              derretida, manjericão fresco e um toque de azeite. Sabor e
-              simplicidade!
-            </Descricao>
-            <Button>Adicionar ao carrinho</Button>
-          </div>
-        </Prato>
-        <Prato>
-          <Imagem>
-            <img src={pizza} alt="" />
-          </Imagem>
-          <div>
-            <NomePrato>Pizza Marguerita</NomePrato>
-            <Descricao>
-              A clássica Marguerita: molho de tomate suculento, mussarela
-              derretida, manjericão fresco e um toque de azeite. Sabor e
-              simplicidade!
-            </Descricao>
-            <Button>Adicionar ao carrinho</Button>
-          </div>
-        </Prato>
-        <Prato>
-          <Imagem>
-            <img src={pizza} alt="" />
-          </Imagem>
-          <div>
-            <NomePrato>Pizza Marguerita</NomePrato>
-            <Descricao>
-              A clássica Marguerita: molho de tomate suculento, mussarela
-              derretida, manjericão fresco e um toque de azeite. Sabor e
-              simplicidade!
-            </Descricao>
-            <Button>Adicionar ao carrinho</Button>
-          </div>
-        </Prato>
-        <Prato>
-          <Imagem>
-            <img src={pizza} alt="" />
-          </Imagem>
-          <div>
-            <NomePrato>Pizza Marguerita</NomePrato>
-            <Descricao>
-              A clássica Marguerita: molho de tomate suculento, mussarela
-              derretida, manjericão fresco e um toque de azeite. Sabor e
-              simplicidade!
-            </Descricao>
-            <Button>Adicionar ao carrinho</Button>
-          </div>
-        </Prato>
-      </Produto>
-    </>
+    <Prato>
+      <Imagem>
+        <img src={image} alt={name} />
+      </Imagem>
+      <NomePrato>{name}</NomePrato>
+      <Descricao>{getDescricao(description)}</Descricao>
+      <BotaoDetalhes onClick={handleClick}>{title}</BotaoDetalhes>
+
+      {modalVisivel && (
+        <ModalContainer onClick={() => setModalVisivel(false)}>
+          <Container>
+            <Header>
+              <a onClick={() => setModalVisivel(false)}>
+                <img className="img" src={fechar} alt="Fechar" />
+              </a>
+            </Header>
+            <StyledItems>
+              <div>
+                <img className="prato" src={image} alt={name} />
+              </div>
+              <div>
+                <Titulo>{name}</Titulo>
+                <Descrition>{description}</Descrition>
+                <Descricao>{serve}</Descricao>
+                <Carrinho>Adicionar ao carrinho {infos}</Carrinho>
+              </div>
+            </StyledItems>
+          </Container>
+        </ModalContainer>
+      )}
+    </Prato>
   )
 }
 
-export default Botao
+export { ProdutoContainer }
+export default Items

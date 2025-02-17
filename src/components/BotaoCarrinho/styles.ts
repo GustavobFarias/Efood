@@ -4,20 +4,28 @@ import { cores } from '../../styles'
 export const Produto = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  padding: 56px 0;
 `
 
 export const Prato = styled.div`
-  width: 320px;
-  height: 338px;
   background-color: ${cores.rosado};
   color: ${cores.branca};
   padding: 8px;
-  margin-top: 56px;
+  position: relative;
 `
 
 export const Imagem = styled.div`
-  width: 304px;
-  height: 168px;
+  width: 100%;
+  height: 167px;
+  margin-bottom: 8px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `
 
 export const NomePrato = styled.h4`
@@ -34,12 +42,86 @@ export const Descricao = styled.p`
   padding-bottom: 8px;
 `
 
-export const Button = styled.a`
+export const Carrinho = styled.a`
   display: block;
   text-align: center;
-  width: 100%;
+  width: 218px;
+  font-size: 14px;
+  font-weight: 700;
   padding: 4px;
+  margin-top: 16px;
   background-color: ${cores.branca};
   color: ${cores.rosado};
+  cursor: pointer;
+`
+
+export const Header = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px;
+`
+
+export const ModalContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+`
+
+export const Items = styled.div`
+  display: flex;
+  padding-right: 32px;
+`
+
+export const Container = styled.div`
+  width: 1024px;
+  height: 344px;
+  background-color: ${cores.rosado};
+  color: #fff;
+  padding: 0 0 32px 32px;
+
+  .img {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .prato {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    margin-right: 24px;
+  }
+`
+
+export const Titulo = styled.h3`
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 21px;
+  margin-bottom: 16px;
+`
+
+export const Descrition = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: 18px;
+`
+
+export const Botao = styled.button`
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  padding: 4px 6px;
+  background-color: ${cores.branca};
+  color: ${cores.rosado};
+  border: none;
   cursor: pointer;
 `
