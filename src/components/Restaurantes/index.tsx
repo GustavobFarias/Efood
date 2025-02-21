@@ -1,8 +1,8 @@
 import estrela from '../../assets/images/estrela.png'
+import { Container } from '../../pages/Home/styles'
 import {
   Card,
   Comidas,
-  Container,
   Descrition,
   Destaque,
   Infos,

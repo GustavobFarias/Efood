@@ -26,13 +26,14 @@ export const ImgBanner = styled.div`
   font-size: 32px;
   line-height: 37px;
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
 
   p {
     font-weight: 900;
   }
 `
 
-export const Titulo = styled.p`
+export const Tipo = styled.h3`
   font-weight: 100;
   padding-top: 24px;
   margin-bottom: 156px;

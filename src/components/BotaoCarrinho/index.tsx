@@ -14,18 +14,12 @@ import {
 } from './styles'
 import { BotaoDetalhes } from '../Restaurantes/styles'
 import fechar from '../../assets/images/x.png'
-import { ProdutoContainer } from './ProdutoContainer'
+import { ProdutoContainer } from './styles'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
+import { Prato as PratoType } from '../../pages/Retaurant'
 
-export type Prato = {
-  id: number
-  nome: string
-  descricao: string
-  foto: string
-  preco: number
-  porcao: string
-}
-
-type Props = {
+export type Props = {
   type: 'button' | 'link'
   title: string
   to?: string
@@ -35,19 +29,26 @@ type Props = {
   image: string
   serve: string
   infos: string
+  prato: PratoType
 }
 
 const Items = ({
   type = 'button',
   title,
-  to,
   name,
   description,
   image,
   infos,
-  serve
+  serve,
+  prato
 }: Props) => {
   const [modalVisivel, setModalVisivel] = useState(false)
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(prato))
+    dispatch(open())
+  }
 
   const getDescricao = (descricao: string) => {
     if (descricao.length > 200) {
@@ -88,7 +89,9 @@ const Items = ({
                 <Titulo>{name}</Titulo>
                 <Descrition>{description}</Descrition>
                 <Descricao>{serve}</Descricao>
-                <Carrinho>Adicionar ao carrinho {infos}</Carrinho>
+                <Carrinho onClick={addToCart}>
+                  Adicionar ao carrinho - {infos}
+                </Carrinho>
               </div>
             </StyledItems>
           </Container>

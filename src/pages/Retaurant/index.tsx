@@ -2,9 +2,12 @@ import Banner from '../../components/Banner'
 import logo from '../../assets/images/logo.png'
 import vector from '../../assets/images/Vector.png'
 import { Container, HeaderContainer } from '../../components/Banner/styles'
-import { useEffect, useState } from 'react'
 import Items, { ProdutoContainer } from '../../components/BotaoCarrinho'
 import { useParams } from 'react-router-dom'
+import { useGetPratosQuery, useGetRestauranteQuery } from '../../services/api'
+import { useDispatch, useSelector } from 'react-redux'
+import { open } from '../../store/reducers/cart'
+import { RootState } from '../../store'
 
 export type Prato = {
   id: number
@@ -15,29 +18,19 @@ export type Prato = {
   porcao: string
 }
 
-type RestauranteDetalhe = {
-  id: number
-  titulo: string
-  tipo: string
-  capa: string
-  cardapio: Prato[]
-}
-
 const Restaurant = () => {
   const { id } = useParams()
-  const [pratos, setPratos] = useState<Prato[]>([])
-  const [restaurante, setRestaurante] = useState<RestauranteDetalhe>()
+  const { data: restaurante } = useGetRestauranteQuery(id!)
+  const { data: pratos = [] } = useGetPratosQuery(id!)
+  const dispatch = useDispatch()
+  const cartState = useSelector((state: RootState) => state.cart)
+  const items = cartState?.items || []
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setRestaurante(res)
-        setPratos(res.cardapio || [])
-      })
-  }, [id])
+  if (!restaurante || !pratos) return null
 
-  if (!restaurante) return null
+  const openCart = () => {
+    dispatch(open())
+  }
 
   return (
     <>
@@ -45,8 +38,8 @@ const Restaurant = () => {
         <Container className="container">
           <h2>Restaurantes</h2>
           <img src={logo} alt="Logo do restaurante" />
-          <p>
-            <span>0 </span>
+          <p onClick={openCart}>
+            <span>{items.length} </span>
             produto(s) no carrinho
           </p>
         </Container>
@@ -69,6 +62,7 @@ const Restaurant = () => {
               image={prato.foto}
               serve={`Serve: ${prato.porcao}`}
               infos={`R$ ${prato.preco.toFixed(2).replace('.', ',')}`}
+              prato={prato}
             />
           ))}
         </ProdutoContainer>

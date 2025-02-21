@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const ContainerFooter = styled.div`
   background-color: ${cores.bege};
@@ -29,4 +29,8 @@ export const Descrition = styled.p`
   line-height: 11px;
   color: ${cores.rosado};
   text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 99%;
+  }
 `

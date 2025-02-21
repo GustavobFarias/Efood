@@ -1,39 +1,26 @@
-import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
 import { Container } from './styles'
 import Restaurantes from '../../components/Restaurantes'
+import { useGetRestaurantesQuery } from '../../services/api'
+import { Restaurante } from '../../types'
 
-type Restaurante = {
+type RestauranteCardProps = {
   id: number
-  titulo: string
-  descricao: string
-  capa: string
-  tipo: string
-  avaliacao: number
-}
-
-export type Props = {
-  type: 'button' | 'link'
   title: string
-  to?: string
-  onClick?: () => void
-  children: React.ReactNode
+  description: string
+  image: string
+  infos: string[]
+  rating: number
 }
 
 const Home = () => {
-  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([])
-
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res))
-  }, [])
+  const { data: restaurantes = [] } = useGetRestaurantesQuery()
 
   return (
     <>
       <Header />
       <Container className="container">
-        {restaurantes.map((restaurante) => (
+        {restaurantes.map((restaurante: Restaurante) => (
           <Restaurantes
             key={restaurante.id}
             id={restaurante.id}
