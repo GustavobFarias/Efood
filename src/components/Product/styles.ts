@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const ProdutoContainer = styled.div`
   display: grid;
@@ -18,8 +18,8 @@ export const ProdutoContainer = styled.div`
 `
 
 export const Prato = styled.div`
-  background-color: ${cores.rosado};
-  color: ${cores.branca};
+  background-color: ${colors.rosy};
+  color: ${colors.white};
   padding: 8px;
   position: relative;
   width: 320px;
@@ -65,8 +65,8 @@ export const Carrinho = styled.a`
   font-weight: 700;
   padding: 4px;
   margin-top: 16px;
-  background-color: ${cores.branca};
-  color: ${cores.rosado};
+  background-color: ${colors.white};
+  color: ${colors.rosy};
   cursor: pointer;
 `
 
@@ -98,7 +98,7 @@ export const Items = styled.div`
 export const Container = styled.div`
   width: 1024px;
   height: 344px;
-  background-color: ${cores.rosado};
+  background-color: ${colors.rosy};
   color: #fff;
   padding: 0 0 32px 32px;
 
@@ -139,8 +139,8 @@ export const Botao = styled.button`
   font-weight: 700;
   line-height: 16px;
   padding: 4px 6px;
-  background-color: ${cores.branca};
-  color: ${cores.rosado};
+  background-color: ${colors.white};
+  color: ${colors.rosy};
   border: none;
   cursor: pointer;
 `

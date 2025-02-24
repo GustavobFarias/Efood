@@ -1,19 +1,20 @@
-import logo from '../../assets/images/logo.png'
+import soon from '../../assets/images/logo.png'
 import vector from '../../assets/images/Vector.png'
-import { Container, ContainerHeader, SubTitulo, Titulo } from './styles'
+
+import * as S from './styles'
 
 const Header = () => {
   return (
-    <ContainerHeader style={{ backgroundImage: `url(${vector})` }}>
-      <Titulo>
-        <img src={logo} alt="Logo Efood" />
-      </Titulo>
-      <Container>
-        <SubTitulo>
+    <S.ContainerHeader style={{ backgroundImage: `url(${vector})` }}>
+      <S.Titulo>
+        <img src={soon} alt="Logo Efood" />
+      </S.Titulo>
+      <S.Container>
+        <S.SubTitulo>
           Viva experiências gastronômicas no conforto da sua casa
-        </SubTitulo>
-      </Container>
-    </ContainerHeader>
+        </S.SubTitulo>
+      </S.Container>
+    </S.ContainerHeader>
   )
 }
 

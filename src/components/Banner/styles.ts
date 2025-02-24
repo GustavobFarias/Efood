@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const HeaderContainer = styled.div`
   height: 186px;
@@ -16,7 +16,7 @@ export const Container = styled.div`
     font-size: 18px;
     font-weight: 900;
     line-height: 21px;
-    color: ${cores.rosado};
+    color: ${colors.rosy};
   }
 `
 
@@ -33,7 +33,7 @@ export const ImgBanner = styled.div`
   }
 `
 
-export const Tipo = styled.h3`
+export const Type = styled.h3`
   font-weight: 100;
   padding-top: 24px;
   margin-bottom: 156px;

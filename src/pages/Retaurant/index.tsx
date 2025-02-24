@@ -1,27 +1,24 @@
-import Banner from '../../components/Banner'
-import logo from '../../assets/images/logo.png'
-import vector from '../../assets/images/Vector.png'
-import { Container, HeaderContainer } from '../../components/Banner/styles'
-import Items, { ProdutoContainer } from '../../components/BotaoCarrinho'
 import { useParams } from 'react-router-dom'
 import { useGetPratosQuery, useGetRestauranteQuery } from '../../services/api'
 import { useDispatch, useSelector } from 'react-redux'
+
+import Banner from '../../components/Banner'
+import logo from '../../assets/images/logo.png'
+import vector from '../../assets/images/Vector.png'
+
+import Items, { ProdutoContainer } from '../../components/Product'
+
 import { open } from '../../store/reducers/cart'
 import { RootState } from '../../store'
 
-export type Prato = {
-  id: number
-  nome: string
-  descricao: string
-  foto: string
-  preco: number
-  porcao: string
-}
+import { Container, HeaderContainer } from '../../components/Banner/styles'
 
 const Restaurant = () => {
   const { id } = useParams()
+
   const { data: restaurante } = useGetRestauranteQuery(id!)
   const { data: pratos = [] } = useGetPratosQuery(id!)
+
   const dispatch = useDispatch()
   const cartState = useSelector((state: RootState) => state.cart)
   const items = cartState?.items || []
@@ -47,7 +44,7 @@ const Restaurant = () => {
       <Banner
         id={id || ''}
         name={restaurante.titulo}
-        tipo={restaurante.tipo}
+        type={restaurante.tipo}
         image={restaurante.capa}
       />
       <div className="container">

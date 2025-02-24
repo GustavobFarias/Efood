@@ -1,23 +1,15 @@
 import { useState } from 'react'
-import {
-  Container,
-  Descricao,
-  Descrition,
-  Header,
-  Imagem,
-  ModalContainer,
-  NomePrato,
-  Prato,
-  Titulo,
-  Items as StyledItems,
-  Carrinho
-} from './styles'
-import { BotaoDetalhes } from '../Restaurantes/styles'
-import fechar from '../../assets/images/x.png'
-import { ProdutoContainer } from './styles'
 import { useDispatch } from 'react-redux'
+
+import { BotaoDetalhes } from '../Restaurantes/styles'
+import close from '../../assets/images/x.png'
+import { ProdutoContainer } from './styles'
+
 import { add, open } from '../../store/reducers/cart'
-import { Prato as PratoType } from '../../pages/Retaurant'
+
+import { Prato as PratoType } from '../../types'
+
+import * as S from './styles'
 
 export type Props = {
   type: 'button' | 'link'
@@ -65,39 +57,39 @@ const Items = ({
   }
 
   return (
-    <Prato>
-      <Imagem>
+    <S.Prato>
+      <S.Imagem>
         <img src={image} alt={name} />
-      </Imagem>
-      <NomePrato>{name}</NomePrato>
-      <Descricao>{getDescricao(description)}</Descricao>
+      </S.Imagem>
+      <S.NomePrato>{name}</S.NomePrato>
+      <S.Descricao>{getDescricao(description)}</S.Descricao>
       <BotaoDetalhes onClick={handleClick}>{title}</BotaoDetalhes>
 
       {modalVisivel && (
-        <ModalContainer onClick={() => setModalVisivel(false)}>
-          <Container>
-            <Header>
+        <S.ModalContainer onClick={() => setModalVisivel(false)}>
+          <S.Container>
+            <S.Header>
               <a onClick={() => setModalVisivel(false)}>
-                <img className="img" src={fechar} alt="Fechar" />
+                <img className="img" src={close} alt="Fechar" />
               </a>
-            </Header>
-            <StyledItems>
+            </S.Header>
+            <S.Items>
               <div>
                 <img className="prato" src={image} alt={name} />
               </div>
               <div>
-                <Titulo>{name}</Titulo>
-                <Descrition>{description}</Descrition>
-                <Descricao>{serve}</Descricao>
-                <Carrinho onClick={addToCart}>
+                <S.Titulo>{name}</S.Titulo>
+                <S.Descrition>{description}</S.Descrition>
+                <S.Descricao>{serve}</S.Descricao>
+                <S.Carrinho onClick={addToCart}>
                   Adicionar ao carrinho - {infos}
-                </Carrinho>
+                </S.Carrinho>
               </div>
-            </StyledItems>
-          </Container>
-        </ModalContainer>
+            </S.Items>
+          </S.Container>
+        </S.ModalContainer>
       )}
-    </Prato>
+    </S.Prato>
   )
 }
 

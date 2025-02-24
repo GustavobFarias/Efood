@@ -1,18 +1,9 @@
-import estrela from '../../assets/images/estrela.png'
-import { Container } from '../../pages/Home/styles'
-import {
-  Card,
-  Comidas,
-  Descrition,
-  Destaque,
-  Infos,
-  Nota,
-  Tipos,
-  TituloCard,
-  RestaurantImage,
-  BotaoSaibaMais
-} from './styles'
 import { Link } from 'react-router-dom'
+
+import estrela from '../../assets/images/estrela.png'
+
+import { Container } from '../../pages/Home/styles'
+import * as S from './styles'
 
 type Props = {
   id: number
@@ -40,28 +31,28 @@ const Restaurantes = ({
 
   return (
     <Container>
-      <Card>
-        <RestaurantImage>
+      <S.Card>
+        <S.RestaurantImage>
           <img src={image} alt={title} />
-        </RestaurantImage>
-        <Infos>
-          <TituloCard>
+        </S.RestaurantImage>
+        <S.Infos>
+          <S.TituloCard>
             <h3>{title}</h3>
-            <Nota>
+            <S.Nota>
               <span>{rating.toFixed(1)}</span>
               <img src={estrela} alt="estrela" />
-            </Nota>
-          </TituloCard>
-          <Descrition>{getDescricao(description)}</Descrition>
-          <BotaoSaibaMais as={Link} to={`/restaurante/${id}`}>
+            </S.Nota>
+          </S.TituloCard>
+          <S.Descrition>{getDescricao(description)}</S.Descrition>
+          <S.BotaoSaibaMais as={Link} to={`/restaurante/${id}`}>
             Saiba mais
-          </BotaoSaibaMais>
-        </Infos>
-        <Tipos>
-          <Destaque>Destaque da semana</Destaque>
-          <Comidas>{infos[0]}</Comidas>
-        </Tipos>
-      </Card>
+          </S.BotaoSaibaMais>
+        </S.Infos>
+        <S.Tipos>
+          <S.Destaque>Destaque da semana</S.Destaque>
+          <S.Comidas>{infos[0]}</S.Comidas>
+        </S.Tipos>
+      </S.Card>
     </Container>
   )
 }

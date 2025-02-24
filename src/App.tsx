@@ -2,10 +2,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store'
 
-import { GlobalCss } from './styles'
 import Footer from './components/Footer'
 import Rotas from './routes'
 import Cart from './components/Cart'
+
+import { GlobalCss } from './styles'
 
 function App() {
   return (

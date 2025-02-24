@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -31,7 +31,7 @@ export const SideBar = styled.aside`
   position: fixed;
   top: 0;
   right: 0;
-  background-color: ${cores.rosado};
+  background-color: ${colors.rosy};
   z-index: 1000;
   padding: 32px 8px;
   max-width: 400px;
@@ -42,10 +42,10 @@ export const SideBar = styled.aside`
 export const CartItem = styled.div`
   display: flex;
   padding: 12px;
-  background-color: ${cores.branca};
+  background-color: ${colors.white};
   margin-bottom: 16px;
   position: relative;
-  color: ${cores.rosado};
+  color: ${colors.rosy};
 
   > div {
     width: calc(100% - 112px); // 100px da imagem + 12px do padding
@@ -85,7 +85,7 @@ export const CartItem = styled.div`
 export const ValorTotal = styled.div`
   display: flex;
   justify-content: space-between;
-  color: ${cores.branca};
+  color: ${colors.white};
   padding-top: 40px;
   padding-bottom: 16px;
 
@@ -99,8 +99,8 @@ export const ValorTotal = styled.div`
 
 export const Botao = styled.button`
   width: 100%;
-  background-color: ${cores.branca};
-  color: ${cores.rosado};
+  background-color: ${colors.white};
+  color: ${colors.rosy};
   padding: 4px 0;
   border: none;
   font-size: 14px;

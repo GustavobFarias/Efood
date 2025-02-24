@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const RestaurantImage = styled.div`
   width: 100%;
@@ -16,8 +16,8 @@ export const RestaurantImage = styled.div`
 export const Card = styled.div`
   width: 472px;
   margin-top: 80px;
-  border: 1px solid ${cores.rosado};
-  color: ${cores.rosado};
+  border: 1px solid ${colors.rosy};
+  color: ${colors.rosy};
   position: relative;
 
   @media (max-width: ${breakpoints.desktop}) {
@@ -75,10 +75,10 @@ export const BotaoSaibaMais = styled.a`
   display: inline-block;
   text-decoration: none;
   padding: 4px 6px;
-  background-color: ${cores.rosado};
+  background-color: ${colors.rosy};
   border: none;
   font-size: 14px;
-  color: ${cores.branca};
+  color: ${colors.white};
   cursor: pointer;
 `
 
@@ -87,10 +87,10 @@ export const BotaoDetalhes = styled.a`
   text-align: center;
   text-decoration: none;
   padding: 4px 6px;
-  background-color: ${cores.branca};
+  background-color: ${colors.white};
   border: none;
   font-size: 14px;
-  color: ${cores.rosado};
+  color: ${colors.rosy};
   cursor: pointer;
 `
 
@@ -109,13 +109,13 @@ export const Tipos = styled.div`
 
 export const Destaque = styled.div`
   padding: 6px;
-  color: ${cores.branca};
-  background-color: ${cores.rosado};
+  color: ${colors.white};
+  background-color: ${colors.rosy};
   margin-right: 8px;
 `
 
 export const Comidas = styled.div`
   padding: 6px;
-  color: ${cores.branca};
-  background-color: ${cores.rosado};
+  color: ${colors.white};
+  background-color: ${colors.rosy};
 `

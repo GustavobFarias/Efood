@@ -1,15 +1,11 @@
-import {
-  Botao,
-  CartContainer,
-  CartItem,
-  Overlay,
-  SideBar,
-  ValorTotal
-} from './styles'
-import lixeira from '../../assets/images/lixeira.png'
 import { useSelector, useDispatch } from 'react-redux'
+
 import { RootState } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
+
+import bin from '../../assets/images/lixeira.png'
+
+import * as S from './styles'
 
 const Cart = () => {
   const cartState = useSelector((state: RootState) => state.cart)
@@ -20,11 +16,11 @@ const Cart = () => {
 
   return (
     <>
-      <CartContainer className={isOpen ? 'is-open' : ''}>
-        <Overlay onClick={() => dispatch(close())} />
-        <SideBar>
+      <S.CartContainer className={isOpen ? 'is-open' : ''}>
+        <S.Overlay onClick={() => dispatch(close())} />
+        <S.SideBar>
           {items.map((item) => (
-            <CartItem key={item.id}>
+            <S.CartItem key={item.id}>
               <img src={item.foto} alt={item.nome} />
               <div>
                 <h3>{item.nome}</h3>
@@ -32,14 +28,14 @@ const Cart = () => {
               </div>
               <span>
                 <img
-                  src={lixeira}
+                  src={bin}
                   alt="Remover item"
                   onClick={() => dispatch(remove(item.id))}
                 />
               </span>
-            </CartItem>
+            </S.CartItem>
           ))}
-          <ValorTotal>
+          <S.ValorTotal>
             <p>Valor total</p>
             <span>
               R${' '}
@@ -48,10 +44,10 @@ const Cart = () => {
                 .toFixed(2)
                 .replace('.', ',')}
             </span>
-          </ValorTotal>
-          <Botao>Continuar com a entrega</Botao>
-        </SideBar>
-      </CartContainer>
+          </S.ValorTotal>
+          <S.Botao>Continuar com a entrega</S.Botao>
+        </S.SideBar>
+      </S.CartContainer>
     </>
   )
 }

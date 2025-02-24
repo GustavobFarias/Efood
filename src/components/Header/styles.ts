@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const ContainerHeader = styled.div`
   height: 384px;
@@ -32,7 +32,7 @@ export const SubTitulo = styled.h2`
   font-weight: 900;
   font-size: 36px;
   line-height: 42px;
-  color: ${cores.rosado};
+  color: ${colors.rosy};
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 26px;

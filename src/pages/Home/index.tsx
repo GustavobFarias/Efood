@@ -1,17 +1,11 @@
-import Header from '../../components/Header'
-import { Container } from './styles'
-import Restaurantes from '../../components/Restaurantes'
 import { useGetRestaurantesQuery } from '../../services/api'
+
+import Header from '../../components/Header'
+import Restaurantes from '../../components/Restaurantes'
+
 import { Restaurante } from '../../types'
 
-type RestauranteCardProps = {
-  id: number
-  title: string
-  description: string
-  image: string
-  infos: string[]
-  rating: number
-}
+import { Container } from './styles'
 
 const Home = () => {
   const { data: restaurantes = [] } = useGetRestaurantesQuery()
