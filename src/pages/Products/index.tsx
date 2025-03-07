@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useGetPratosQuery, useGetRestauranteQuery } from '../../services/api'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -16,11 +16,14 @@ import { Container, HeaderContainer } from '../../components/Banner/styles'
 const Restaurant = () => {
   const { id } = useParams()
 
-  const { data: restaurante } = useGetRestauranteQuery(id!)
-  const { data: pratos = [] } = useGetPratosQuery(id!)
+  const { data: restaurante } = useGetRestauranteQuery(id ?? '')
+  const { data: pratos = [] } = useGetPratosQuery(id ?? '')
 
   const dispatch = useDispatch()
   const cartState = useSelector((state: RootState) => state.cart)
+
+  if (!restaurante || !pratos.length) return <p>Carregando...</p>
+
   const items = cartState?.items || []
 
   if (!restaurante || !pratos) return null
@@ -33,8 +36,12 @@ const Restaurant = () => {
     <>
       <HeaderContainer style={{ backgroundImage: `url(${vector})` }}>
         <Container className="container">
-          <h2>Restaurantes</h2>
-          <img src={logo} alt="Logo do restaurante" />
+          <Link className="Link" to={'/'}>
+            Restaurantes
+          </Link>
+          <div className="logo">
+            <img src={logo} alt="Logo do restaurante" />
+          </div>
           <p onClick={openCart}>
             <span>{items.length} </span>
             produto(s) no carrinho

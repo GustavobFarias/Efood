@@ -68,6 +68,10 @@ export const Carrinho = styled.a`
   background-color: ${colors.white};
   color: ${colors.rosy};
   cursor: pointer;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin-top: 0;
+  }
 `
 
 export const Header = styled.div`
@@ -93,6 +97,10 @@ export const ModalContainer = styled.div`
 export const Items = styled.div`
   display: flex;
   padding-right: 32px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    display: block;
+  }
 `
 
 export const Container = styled.div`
@@ -117,6 +125,13 @@ export const Container = styled.div`
 
   @media (max-width: ${breakpoints.desktop}) {
     width: 96%;
+    height: 500px;
+
+    .prato {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 8px;
+    }
   }
 `
 

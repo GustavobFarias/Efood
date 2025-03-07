@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -8,7 +8,7 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 998;
+  z-index: 999;
 `
 
 export const CartContainer = styled.div`
@@ -37,6 +37,29 @@ export const SideBar = styled.aside`
   max-width: 400px;
   width: 100%;
   height: 100vh;
+
+  .botoes {
+    margin-top: 24px;
+  }
+
+  > h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: ${colors.beige};
+  }
+
+  p {
+    color: ${colors.beige};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-top: 16px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 300px;
+  }
 `
 
 export const CartItem = styled.div`
@@ -48,7 +71,7 @@ export const CartItem = styled.div`
   color: ${colors.rosy};
 
   > div {
-    width: calc(100% - 112px); // 100px da imagem + 12px do padding
+    width: calc(100% - 112px);
   }
 
   img {

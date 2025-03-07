@@ -24,7 +24,7 @@ export type Props = {
   prato: PratoType
 }
 
-const Items = ({
+const Product = ({
   type = 'button',
   title,
   name,
@@ -94,4 +94,4 @@ const Items = ({
 }
 
 export { ProdutoContainer }
-export default Items
+export default Product
